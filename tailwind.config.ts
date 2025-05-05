@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors for the Pluto app
+				pluto: {
+					background: '#0a0a2a',
+					darkblue: '#1A1F2C',
+					neon: '#33e8f0',
+					accent: '#0dcaf0',
+					purple: '#6E59A5',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +93,30 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-neon': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.7' }
+				},
+				'glow': {
+					'0%, 100%': { 
+						boxShadow: '0 0 5px rgba(51, 232, 240, 0.5), 0 0 10px rgba(51, 232, 240, 0.3)' 
+					},
+					'50%': { 
+						boxShadow: '0 0 15px rgba(51, 232, 240, 0.8), 0 0 20px rgba(51, 232, 240, 0.5)' 
+					}
+				},
+				'background-flow': {
+					'0%': { backgroundPosition: '0% 0%' },
+					'100%': { backgroundPosition: '100% 100%' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-neon': 'pulse-neon 2s ease-in-out infinite',
+				'glow': 'glow 2s ease-in-out infinite',
+				'background-flow': 'background-flow 10s ease infinite alternate'
 			}
 		}
 	},
