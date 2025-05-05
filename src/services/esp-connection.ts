@@ -1,8 +1,7 @@
-
 import { toast } from 'sonner';
 
 // Define supported commands
-export type Command = 'FRONT' | 'LEFT' | 'RIGHT' | 'DANCE1' | 'DANCE2' | 'CLOCK' | 'BUG' | 'MOON' | 'HAND' | 'DUMBBELL' | 'SMILE';
+export type Command = 'FRONT' | 'LEFT' | 'RIGHT' | 'DOWN' | 'DANCE1' | 'DANCE2' | 'CLOCK' | 'BUG' | 'MOON' | 'HAND' | 'DUMBBELL' | 'SMILE';
 
 interface ConnectionState {
   connected: boolean;

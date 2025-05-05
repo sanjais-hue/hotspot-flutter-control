@@ -6,6 +6,7 @@ import StatusIndicator from '@/components/StatusIndicator';
 import ControlButton from '@/components/ControlButton';
 import IconButton from '@/components/IconButton';
 import ConnectModal from '@/components/ConnectModal';
+import JoystickController from '@/components/JoystickController';
 import { Clock, Bug, Moon, Hand, Dumbbell, Smile, Wifi } from 'lucide-react';
 import { toast } from 'sonner';
 import { Command } from '@/services/esp-connection';
@@ -67,33 +68,18 @@ const Index = () => {
 
         {/* Main Controls */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Direction Controls */}
-          <div className="space-y-4">
-            <ControlButton 
-              label="FRONT" 
-              onClick={() => handleCommand('FRONT')}
-              className="w-full"
-              variant="wide"
-              active={activeCommand === 'FRONT'}
-            />
-            
-            <div className="grid grid-cols-1 gap-4">
-              <ControlButton 
-                label="LEFT" 
-                onClick={() => handleCommand('LEFT')}
-                variant="wide"
-                active={activeCommand === 'LEFT'}
-              />
-              
-              <ControlButton 
-                label="RIGHT" 
-                onClick={() => handleCommand('RIGHT')}
-                variant="wide"
-                active={activeCommand === 'RIGHT'}
+          {/* Direction Controls with Joystick */}
+          <div className="space-y-6">
+            <div className="p-4 border border-pluto-neon/30 rounded-lg bg-pluto-darkblue/30 backdrop-blur-sm">
+              <h2 className="text-xl font-semibold text-center mb-4 text-pluto-neon">Movement Controls</h2>
+              <JoystickController 
+                onDirectionPress={handleCommand}
+                activeCommand={activeCommand}
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mt-8">
+            <div className="grid grid-cols-2 gap-4 p-4 border border-pluto-neon/30 rounded-lg bg-pluto-darkblue/30 backdrop-blur-sm">
+              <h2 className="text-xl font-semibold col-span-2 text-center mb-4 text-pluto-neon">Dance Modes</h2>
               <ControlButton 
                 label="DANCE 1" 
                 onClick={() => handleCommand('DANCE1')}
@@ -109,42 +95,51 @@ const Index = () => {
           </div>
 
           {/* Icon Controls */}
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-6">
-            <IconButton 
-              icon={Clock} 
-              onClick={() => handleCommand('CLOCK')}
-              active={activeCommand === 'CLOCK'}
-            />
-            
-            <IconButton 
-              icon={Bug} 
-              onClick={() => handleCommand('BUG')}
-              active={activeCommand === 'BUG'}
-            />
-            
-            <IconButton 
-              icon={Moon} 
-              onClick={() => handleCommand('MOON')}
-              active={activeCommand === 'MOON'}
-            />
-            
-            <IconButton 
-              icon={Hand} 
-              onClick={() => handleCommand('HAND')}
-              active={activeCommand === 'HAND'}
-            />
-            
-            <IconButton 
-              icon={Dumbbell} 
-              onClick={() => handleCommand('DUMBBELL')}
-              active={activeCommand === 'DUMBBELL'}
-            />
-            
-            <IconButton 
-              icon={Smile} 
-              onClick={() => handleCommand('SMILE')}
-              active={activeCommand === 'SMILE'}
-            />
+          <div className="p-4 border border-pluto-neon/30 rounded-lg bg-pluto-darkblue/30 backdrop-blur-sm">
+            <h2 className="text-xl font-semibold text-center mb-4 text-pluto-neon">Action Controls</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              <IconButton 
+                icon={Clock} 
+                onClick={() => handleCommand('CLOCK')}
+                active={activeCommand === 'CLOCK'}
+                tooltip="Clock"
+              />
+              
+              <IconButton 
+                icon={Bug} 
+                onClick={() => handleCommand('BUG')}
+                active={activeCommand === 'BUG'}
+                tooltip="Bug"
+              />
+              
+              <IconButton 
+                icon={Moon} 
+                onClick={() => handleCommand('MOON')}
+                active={activeCommand === 'MOON'}
+                tooltip="Moon"
+              />
+              
+              <IconButton 
+                icon={Hand} 
+                onClick={() => handleCommand('HAND')}
+                active={activeCommand === 'HAND'}
+                tooltip="Hand"
+              />
+              
+              <IconButton 
+                icon={Dumbbell} 
+                onClick={() => handleCommand('DUMBBELL')}
+                active={activeCommand === 'DUMBBELL'}
+                tooltip="Dumbbell"
+              />
+              
+              <IconButton 
+                icon={Smile} 
+                onClick={() => handleCommand('SMILE')}
+                active={activeCommand === 'SMILE'}
+                tooltip="Smile"
+              />
+            </div>
           </div>
         </div>
 
